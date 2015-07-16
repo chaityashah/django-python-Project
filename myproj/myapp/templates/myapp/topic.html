@@ -1,0 +1,55 @@
+{% extends 'myapp/base.html' %}
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Topic</title>
+</head>
+<body>
+
+{% block body_block %}
+	<!-- <b>Topic:
+	<br>
+	<br> -->
+	{% if topiclist %}
+	<table class="table table-striped table-hover ">
+  <thead>
+    <tr>
+       <th>Topic Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    	{% for topic in topiclist %}
+    <tr>
+      <td><a href="{% url 'myapp:topicdetail' topic.id %}">{{topic}} </a></b></td>
+    </tr>
+    {% endfor %}
+    	  </tbody>
+</table> 
+
+<script>
+    var tables = document.getElementsByTagName('table');
+    var table = tables[tables.length - 1];
+    var rows = table.rows;
+    for(var i = 0, td; i < rows.length; i++){
+        td = document.createElement('td');
+        td.appendChild(document.createTextNode(i + 1));
+        rows[i].insertBefore(td, rows[i].firstChild);
+    }
+</script>
+    {% else %}
+    <strong>Oops, There are no available topics!!</strong>
+    {% endif %}
+<br>
+<a href = "{% url 'myapp:addtopic' %}">Add Topic</a>
+
+
+
+
+{% endblock %}
+ 
+ </body>
+ </html>
+ 
+ </body>
+ </html>

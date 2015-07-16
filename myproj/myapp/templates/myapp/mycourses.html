@@ -1,0 +1,13 @@
+{% extends 'myapp/base.html' %}
+
+{% block body_block %}
+<body>
+	{% for course in courselist %}
+		{{course.course_no}}
+		<br>
+		{{course.title}}
+		<br>
+		<br> 
+	{% endfor %}
+</body>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'myapp/base.html' %}
+
+{% block body_block %}
+<h2>Topic Detail Page</h2>
+
+<p class="text-success">Subject : </b>{{topic.subject}} </p>
+<p class="text-primary">No. of people interested : {{topic.num_responses}} </p>
+<p class="text-warning">Is it a introductory course? : {{topic.intro_course}}  </p>
+<p class="text-in	fo"> Average age is : {{topic.avg_age}} </p>
+
+<!-- <a href="{% url 'myapp:index' %}">Index</a></p>
+<a href="{% url 'myapp:about' %}">About page</a>
+<a href = "{% url 'myapp:addtopic' %}">Add Topic</a>
+ -->
+ <form class="form-horizontal" action="{% url 'myapp:topicdetail' topic.id%}" method="post">
+  <fieldset>
+    <legend>Show Your Interest in this Topic</legend>
+    <div class="form-group">
+      {% csrf_token %}
+    	{{ form.as_p }}
+    </div>
+      
+   <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <button type="reset" class="btn btn-default">Reset</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </fieldset>
+</form>
+ 
+ 
+
+    
+   
+
+
+{% endblock %}

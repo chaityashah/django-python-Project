@@ -1,0 +1,38 @@
+
+{% extends 'myapp/base.html' %}
+
+{% block body_block %}
+{% if user.is_authenticated  %}<h4><span class="label label-success"> Today's Lucky Number: {{luckynum}}</span> </h4> {% endif %}
+<h2>List of Available Courses</h2>
+
+<div class="list-group">
+<a href="#" class="list-group-item active"> <h4>List of Available Courses</h4> </a>
+ 
+
+<br>
+   {% if courselist %}
+     
+       {% for course in courselist %}
+       
+    
+
+ <a href="{% url 'myapp:detail' course.course_no %}" class="list-group-item">{{ course.title }} : {{ course.course_no }}
+ </a>
+
+
+
+       	
+
+           
+       {% endfor %}
+   </div>
+   {% else %}
+       <strong>There are no available courses!</strong>
+   {% endif %}
+  
+   {% if user.is_authenticated  %}
+   <ul class="nav nav-pills">
+  <li class="active"><a href="#">Visits<span class="badge">{{index_visits}}</span></a></li>
+  </ul>   {% endif %}
+   
+{% endblock %}
